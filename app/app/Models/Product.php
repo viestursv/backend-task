@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Domain\Product\Enums\ProductCondition;
+use App\Domain\Product\Enums\ProductType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
@@ -28,6 +30,12 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 class Product extends Model
 {
     use HasUuids;
+
+    protected $casts = [
+        'type' => ProductType::class,
+        'condition' => ProductCondition::class,
+        'published' => 'boolean',
+    ];
 
     protected $fillable = [
         'product_set_id',

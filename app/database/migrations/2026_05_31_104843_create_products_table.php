@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('slug');
 
-            $table->enum('type', ['DEVICE', 'SERVICE']);
-            $table->enum('condition', ['NEW', 'USED', 'REFURBISHED']);
+            $table->enum('type', ['device', 'service']);
+            $table->enum('condition', ['new', 'used', 'refurbished']);
 
             $table->string('description_title');
             $table->text('description_text');
