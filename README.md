@@ -50,3 +50,36 @@ Restricted endpoints require an `X-API-KEY` header.
 | PUT | `/api/admin/products/{id}` | Update a product |
 | DELETE | `/api/admin/products/{id}` | Delete a product |
 | PUT | `/api/admin/vat-rate` | Sync VAT rate and recalculate product prices |
+
+```bash
+curl -X POST http://localhost:8000/api/admin/product-sets \
+  -H "Content-Type: application/json" \
+  -H "X-API-KEY: your-api-key" \
+  -d '{
+    "name": "Gaming Bundle",
+    "products": [
+      {
+        "sku": "PS5-001",
+        "name": "PlayStation 5",
+        "type": "device",
+        "condition": "new",
+        "description_title": "Sony PS5",
+        "description_text": "Latest PlayStation console",
+        "price_wo_vat": 500.00,
+        "wholesale_price": 450.00,
+        "published": true
+      },
+      {
+        "sku": "INSTALL-001",
+        "name": "Installation Service",
+        "type": "service",
+        "condition": "new",
+        "description_title": "Setup Service",
+        "description_text": "Professional installation",
+        "price_wo_vat": 50.00,
+        "wholesale_price": 25.00,
+        "published": false
+      }
+    ]
+  }'
+```
