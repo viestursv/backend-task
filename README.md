@@ -1,3 +1,8 @@
+## Requirements
+
+- Docker
+- Docker Compose
+
 ## Setup
 
 1. Clone the repository
