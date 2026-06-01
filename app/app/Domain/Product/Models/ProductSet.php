@@ -2,8 +2,10 @@
 
 namespace App\Domain\Product\Models;
 
+use Database\Factories\Domain\Product\ProductSetFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -19,9 +21,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductSet extends Model
 {
-    use HasUuids;
+    use HasUuids, HasFactory;
 
     protected $table = 'product_sets';
+
+    protected static function newFactory(): ProductSetFactory
+    {
+        return ProductSetFactory::new();
+    }
 
     protected $fillable = [
         'name',

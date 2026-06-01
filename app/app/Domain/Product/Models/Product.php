@@ -4,8 +4,10 @@ namespace App\Domain\Product\Models;
 
 use App\Domain\Product\Enums\ProductCondition;
 use App\Domain\Product\Enums\ProductType;
+use Database\Factories\Domain\Product\ProductFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -30,9 +32,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    use HasUuids;
+    use HasUuids, HasFactory;
 
     protected $table = 'products';
+
+    protected static function newFactory(): ProductFactory
+    {
+        return ProductFactory::new();
+    }
 
     protected $casts = [
         'type' => ProductType::class,
