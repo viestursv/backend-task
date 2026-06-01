@@ -13,11 +13,11 @@ class StoreProductRequest extends FormRequest
         return [
             'product_set_id'    => ['required', 'string', Rule::exists('product_sets', 'id')],
             'sku'               => ['required', 'string', 'unique:products,sku'],
-            'name'              => ['required', 'string', 'max:255'],
+            'name'              => ['required', 'string', 'max:50'],
             'type'              => ['required', Rule::enum(ProductType::class)],
             'condition'         => ['required', Rule::enum(ProductCondition::class)],
             'description_title' => ['nullable', 'string', 'max:255'],
-            'description_text'  => ['nullable', 'string'],
+            'description_text'  => ['nullable', 'string', 'max:255'],
             'price_wo_vat'      => ['required', 'numeric', 'min:0'],
             'wholesale_price'   => ['nullable', 'numeric', 'min:0'],
             'published'         => ['boolean'],
