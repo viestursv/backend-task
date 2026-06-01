@@ -11,7 +11,6 @@
 /app/storage/framework/views
 
 /app/.env
-/app/.env.*
 
 /app/public/hot
 /app/public/storage

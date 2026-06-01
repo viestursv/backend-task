@@ -6,9 +6,9 @@
    cp .env.example .env
    cp app/.env.example app/.env
 ```
-3. Set your `API_KEY` in `app/.env`. You can generate the key with the following script from inside the container.
+3. Generate an API key and set it in `app/.env`:
 ```bash
-   php artisan tinker --execute="echo \Illuminate\Support\Str::random(64);"
+openssl rand -hex 32
 ```
 
 4. Start the containers:
