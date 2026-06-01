@@ -49,4 +49,4 @@ Restricted endpoints require an `X-API-KEY` header.
 | POST | `/api/admin/products` | Create a product |
 | PUT | `/api/admin/products/{id}` | Update a product |
 | DELETE | `/api/admin/products/{id}` | Delete a product |
-| PUT | `/api/admin/vat` | Sync VAT rate and recalculate product prices |
+| PUT | `/api/admin/vat-rate` | Sync VAT rate and recalculate product prices |
