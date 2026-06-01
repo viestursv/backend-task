@@ -17,10 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'api.key' => ApiKeyMiddleware::class,
         ]);
-
-        $middleware->appendToGroup('admin', [
-            ApiKeyMiddleware::class,
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

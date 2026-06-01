@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Domain\Product\Models;
 
 use App\Domain\Product\Enums\ProductCondition;
 use App\Domain\Product\Enums\ProductType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string $id
@@ -23,13 +24,15 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @property bool $published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\ProductSet $productSet
+ * @property-read \App\Domain\Product\Models\ProductSet $productSet
  * @mixin \Eloquent
  */
 
 class Product extends Model
 {
     use HasUuids;
+
+    protected $table = 'products';
 
     protected $casts = [
         'type' => ProductType::class,
@@ -52,7 +55,7 @@ class Product extends Model
         'published',
     ];
 
-    public function productSet()
+    public function productSet(): BelongsTo
     {
         return $this->belongsTo(ProductSet::class);
     }

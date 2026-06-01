@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Domain\Vat\Clients\VatComplyClient;
 use App\Domain\Vat\Contracts\VatClientInterface;
+use App\Infrastructure\Vat\VatComplyClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

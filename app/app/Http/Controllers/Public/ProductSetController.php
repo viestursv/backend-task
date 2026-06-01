@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers\Public;
 
-use Illuminate\Http\Request;
-use App\Domain\Product\Actions\CreateProductSetAction;
+use App\Domain\Product\Models\ProductSet;
 use App\Http\Resources\Public\ProductSetResource;
-use App\Models\ProductSet;
+use Illuminate\Http\JsonResponse;
 
 class ProductSetController
 {
-    public function __construct(
-        private CreateProductSetAction $action
-    ) {}
-
-    public function show(string $slug)
+    public function show(string $slug): JsonResponse
     {
         $set = ProductSet::where('slug', $slug)
+            ->whereHas('products', fn ($q) => $q->where('published', true))
             ->with(['products' => fn ($q) => $q->where('published', true)])
             ->firstOrFail();
 
-        return new ProductSetResource($set);
+        return ProductSetResource::make($set)->response();
     }
 }
